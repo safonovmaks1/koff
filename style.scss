@@ -1,0 +1,21 @@
+// Base
+@import 'styles/base/fonts';
+@import 'styles/base/default';
+
+// Layouts
+@import 'styles/layouts/header';
+@import 'styles/layouts/catalog';
+@import 'styles/layouts/goods';
+@import 'styles/layouts/card';
+@import 'styles/layouts/product';
+@import 'styles/layouts/cart';
+@import 'styles/layouts/form-order';
+@import 'styles/layouts/order';
+@import 'styles/layouts/footer';
+@import 'styles/layouts/contacts';
+
+// Components
+@import 'styles/components/breadcrumb';
+@import 'styles/components/table';
+@import 'styles/components/radio';
+@import 'styles/components/pagination';
