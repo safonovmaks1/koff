@@ -172,7 +172,7 @@
 									<p class="card__price">5&nbsp;000&nbsp;₽</p>
 								</div>
 
-								<button class="card__btn">В корзину</button>
+								<button class="btn btn--inverse card__btn">В корзину</button>
 
 								<button class="card__favorite">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -200,7 +200,7 @@
 									<p class="card__price">5&nbsp;000&nbsp;₽</p>
 								</div>
 
-								<button class="card__btn">В корзину</button>
+								<button class="btn btn--inverse card__btn">В корзину</button>
 
 								<button class="card__favorite">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -228,7 +228,7 @@
 									<p class="card__price">5&nbsp;000&nbsp;₽</p>
 								</div>
 
-								<button class="card__btn">В корзину</button>
+								<button class="btn btn--inverse card__btn">В корзину</button>
 
 								<button class="card__favorite">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -256,7 +256,7 @@
 									<p class="card__price">5&nbsp;000&nbsp;₽</p>
 								</div>
 
-								<button class="card__btn">В корзину</button>
+								<button class="btn btn--inverse card__btn">В корзину</button>
 
 								<button class="card__favorite">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -431,7 +431,7 @@
 								</tr>
 							</table>
 							<div class="product__btns">
-								<button class="product__btn" type="button">В корзину</button>
+								<button class="btn product__btn" type="button">В корзину</button>
 								<button class="product__like" type="button">
 									<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path
@@ -496,7 +496,7 @@
 							<p class="cart__place-price">20&nbsp;000&nbsp;₽</p>
 						</div>
 						<p class="cart__place-delivery">Доставка&nbsp;0&nbsp;₽</p>
-						<button class="cart__place-btn" type="submit" form="order">Оформить заказ</button>
+						<button class="btn cart__place-btn" type="submit" form="order">Оформить заказ</button>
 					</div>
 
 					<form class="cart__form form-order" action="#" id="order" method="POST">
@@ -533,44 +533,46 @@
 
 			<section class="order">
 				<div class="container order__container">
-					<div class="order__header">
-						<h2 class="order__title">Заказ успешно размещен</h2>
-						<p class="order__price">20&nbsp;000&nbsp;₽</p>
+					<div class="order__wrapper">
+						<div class="order__header">
+							<h2 class="order__title">Заказ успешно размещен</h2>
+							<p class="order__price">20&nbsp;000&nbsp;₽</p>
+						</div>
+						<p class="order__number">№43435</p>
+
+						<div class="order__data">
+							<h3 class="order__data-title">Данные доставки</h3>
+
+							<table class="order__data-table table">
+								<tr class="table__row">
+									<td class="table__field">Получатель</td>
+									<td class="table__value">Иванов Петр Александрович</td>
+								</tr>
+								<tr class="table__row">
+									<td class="table__field">Телефон</td>
+									<td class="table__value">+7 (737) 346 23 00</td>
+								</tr>
+								<tr class="table__row">
+									<td class="table__field">E-mail</td>
+									<td class="table__value">Ivanov84@gmail.com</td>
+								</tr>
+								<tr class="table__row">
+									<td class="table__field">Адрес доставки</td>
+									<td class="table__value">Москва, ул. Ленина, 21, кв. 33</td>
+								</tr>
+								<tr class="table__row">
+									<td class="table__field">Способ оплаты</td>
+									<td class="table__value">Картой при получении</td>
+								</tr>
+								<tr class="table__row">
+									<td class="table__field">Способ получения</td>
+									<td class="table__value">Доставка</td>
+								</tr>
+							</table>
+						</div>
+
+						<a class="btn order__link" href="/">На главную</a>
 					</div>
-					<p class="order__number">№43435</p>
-
-					<div class="order__data">
-						<h3 class="order__data-title">Данные доставки</h3>
-
-						<table class="order__data-table table">
-							<tr class="table__row">
-								<td class="table__field">Получатель</td>
-								<td class="table__value">Иванов Петр Александрович</td>
-							</tr>
-							<tr class="table__row">
-								<td class="table__field">Телефон</td>
-								<td class="table__value">+7 (737) 346 23 00</td>
-							</tr>
-							<tr class="table__row">
-								<td class="table__field">E-mail</td>
-								<td class="table__value">Ivanov84@gmail.com</td>
-							</tr>
-							<tr class="table__row">
-								<td class="table__field">Адрес доставки</td>
-								<td class="table__value">Москва, ул. Ленина, 21, кв. 33</td>
-							</tr>
-							<tr class="table__row">
-								<td class="table__field">Способ оплаты</td>
-								<td class="table__value">Картой при получении</td>
-							</tr>
-							<tr class="table__row">
-								<td class="table__field">Способ получения</td>
-								<td class="table__value">Доставка</td>
-							</tr>
-						</table>
-					</div>
-
-					<button class="order__btn" type="button">На главную</button>
 				</div>
 			</section>
 			<!-- /.order -->

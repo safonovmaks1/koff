@@ -50,24 +50,8 @@
 	}
 
 	&__btn {
-		width: 100%;
-		padding: 12px 24px;
-		color: #780096;
-		border-radius: 32px;
-		border: 1px solid #780096;
-		outline: none;
-
 		@media (min-width: 580px) {
 			grid-area: btn;
-		}
-
-		&:hover {
-			color: #ffffff;
-			background-color: #9200b7;
-		}
-
-		&:focus-visible {
-			border-color: #cc00ff;
 		}
 	}
 
@@ -77,7 +61,7 @@
 		right: 12px;
 	}
 
-	&__img {
+	&__image {
 		width: 100%;
 		object-fit: cover;
 		border-radius: 16px;
