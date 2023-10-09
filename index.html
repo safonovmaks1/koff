@@ -17,10 +17,10 @@
 		<script type="module" src="/main.js"></script>
 	</head>
 	<body>
-		<header class="header">
+		<!-- <header class="header">
 			<div class="container header__container">
-				<a href="/" class="header__logo-link">
-					<img class="header__logo" src="img/logo.svg" alt="Логотип мебельного маркета Koff" />
+				<a href="/" class="header__link-logo">
+					<img class="header__logo" src="/img/logo.svg" alt="Логотип мебельного маркета Koff" />
 				</a>
 
 				<form class="header__search" action="/api/product">
@@ -93,46 +93,44 @@
 				</div>
 			</div>
 		</header>
-		<!-- /.header -->
 
 		<main>
 			<div class="catalog">
 				<div class="container catalog__container">
 					<ul class="catalog__list">
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Диваны">Диваны</a>
+							<a class="catalog__link" href="/category?slug=Диваны">Диваны</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link catalog__link--active" href="/category/?slug=Шкафы">Шкафы</a>
+							<a class="catalog__link catalog__link--active" href="/category?slug=Шкафы">Шкафы</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Стулья">Стулья</a>
+							<a class="catalog__link" href="/category?slug=Стулья">Стулья</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Тумбы">Тумбы</a>
+							<a class="catalog__link" href="/category?slug=Тумбы">Тумбы</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Кровати">Кровати</a>
+							<a class="catalog__link" href="/category?slug=Кровати">Кровати</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Столы">Столы</a>
+							<a class="catalog__link" href="/category?slug=Столы">Столы</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Комоды">Комоды</a>
+							<a class="catalog__link" href="/category?slug=Комоды">Комоды</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Матрасы">Матрасы</a>
+							<a class="catalog__link" href="/category?slug=Матрасы">Матрасы</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Пуфики">Пуфики</a>
+							<a class="catalog__link" href="/category?slug=Пуфики">Пуфики</a>
 						</li>
 						<li class="catalog__item">
-							<a class="catalog__link" href="/category/?slug=Стеллажи">Стеллажи</a>
+							<a class="catalog__link" href="/category?slug=Стеллажи">Стеллажи</a>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<!-- /.catalog -->
 
 			<div class="breadcrumb">
 				<div class="container">
@@ -142,7 +140,7 @@
 							<span class="breadcrumb__separator">&gt;</span>
 						</li>
 						<li class="breadcrumb__item">
-							<a class="breadcrumb__link" href="/category/?slug=Кресла">Кресла</a>
+							<a class="breadcrumb__link" href="/category?slug=Кресла">Кресла</a>
 							<span class="breadcrumb__separator">&gt;</span>
 						</li>
 						<li class="breadcrumb__item">
@@ -152,7 +150,6 @@
 					</ul>
 				</div>
 			</div>
-			<!-- /.breadcrumb -->
 
 			<section class="goods">
 				<div class="container">
@@ -161,13 +158,13 @@
 					<ul class="goods__list">
 						<li class="goods__item">
 							<article class="goods__card card">
-								<a class="card__link card__link-img" href="/product">
-									<img class="card__image" src="img/photo.jpeg" alt="Кресло с подлокотниками" />
+								<a class="card__link card__link-img" href="/product/123">
+									<img class="card__image" src="/img/photo.jpeg" alt="Кресло с подлокотниками" />
 								</a>
 
 								<div class="card__info">
 									<h3 class="card__title">
-										<a class="card__link" href="/product"> Кресло с подлокотниками </a>
+										<a class="card__link" href="/product/123"> Кресло с подлокотниками </a>
 									</h3>
 									<p class="card__price">5&nbsp;000&nbsp;₽</p>
 								</div>
@@ -187,15 +184,15 @@
 								</button>
 							</article>
 						</li>
-						<!-- /.goods__item 1 -->
+					
 						<li class="goods__item">
 							<article class="goods__card card">
-								<a class="card__link card__link-img" href="/product">
-									<img class="card__image" src="img/photo.jpeg" alt="Кресло с подлокотниками" />
+								<a class="card__link card__link-img" href="/product/321">
+									<img class="card__image" src="/img/photo.jpeg" alt="Кресло с подлокотниками" />
 								</a>
 								<div class="card__info">
 									<h3 class="card__title">
-										<a class="card__link" href="/product"> Кресло с подлокотниками </a>
+										<a class="card__link" href="/product/321"> Кресло с подлокотниками </a>
 									</h3>
 									<p class="card__price">5&nbsp;000&nbsp;₽</p>
 								</div>
@@ -215,15 +212,15 @@
 								</button>
 							</article>
 						</li>
-						<!-- /.goods__item 2 -->
+					
 						<li class="goods__item">
 							<article class="goods__card card">
-								<a class="card__link card__link-img" href="/product">
-									<img class="card__image" src="img/photo.jpeg" alt="Кресло с подлокотниками" />
+								<a class="card__link card__link-img" href="/product/456">
+									<img class="card__image" src="/img/photo.jpeg" alt="Кресло с подлокотниками" />
 								</a>
 								<div class="card__info">
 									<h3 class="card__title">
-										<a class="card__link" href="/product"> Кресло с подлокотниками </a>
+										<a class="card__link" href="/product/456"> Кресло с подлокотниками </a>
 									</h3>
 									<p class="card__price">5&nbsp;000&nbsp;₽</p>
 								</div>
@@ -243,15 +240,15 @@
 								</button>
 							</article>
 						</li>
-						<!-- /.goods__item 3 -->
+			
 						<li class="goods__item">
 							<article class="goods__card card">
-								<a class="card__link card__link-img" href="/product">
-									<img class="card__image" src="img/photo.jpeg" alt="Кресло с подлокотниками" />
+								<a class="card__link card__link-img" href="/product/654">
+									<img class="card__image" src="/img/photo.jpeg" alt="Кресло с подлокотниками" />
 								</a>
 								<div class="card__info">
 									<h3 class="card__title">
-										<a class="card__link" href="/product"> Кресло с подлокотниками </a>
+										<a class="card__link" href="/product/654"> Кресло с подлокотниками </a>
 									</h3>
 									<p class="card__price">5&nbsp;000&nbsp;₽</p>
 								</div>
@@ -271,7 +268,7 @@
 								</button>
 							</article>
 						</li>
-						<!-- /.goods__item 4 -->
+			
 					</ul>
 
 					<div class="pagination">
@@ -305,7 +302,6 @@
 					</div>
 				</div>
 			</section>
-			<!-- /.goods -->
 
 			<section class="product">
 				<div class="container product__container">
@@ -314,7 +310,7 @@
 						<div class="swiper product__slider-main">
 							<div class="swiper-wrapper product__main-list">
 								<div class="swiper-slide product__slide">
-									<img class="product__slide-img" src="img/photo.jpeg" />
+									<img class="product__slide-img" src="/img/photo.jpeg" />
 								</div>
 								<div class="swiper-slide product__slide">
 									<img class="product__slide-img" src="https://swiperjs.com/demos/images/nature-2.jpg" />
@@ -370,7 +366,7 @@
 						<div class="swiper product__slider-thumbnails">
 							<div class="swiper-wrapper product__thumbnails-list">
 								<div class="swiper-slide product__thumbnails-slide">
-									<img class="product__thumbnails-img" src="img/photo.jpeg" />
+									<img class="product__thumbnails-img" src="/img/photo.jpeg" />
 								</div>
 								<div class="swiper-slide product__thumbnails-slide">
 									<img class="product__thumbnails-img" src="https://swiperjs.com/demos/images/nature-2.jpg" />
@@ -448,14 +444,13 @@
 					</div>
 				</div>
 			</section>
-			<!-- /.product -->
 
 			<section class="cart">
 				<div class="container cart__container">
 					<h2 class="cart__title">Корзина</h2>
 					<ul class="cart__products">
 						<li class="cart__product">
-							<img class="cart__img" src="img/photo.jpeg" alt="Кресло с подлокотниками" />
+							<img class="cart__img" src="/img/photo.jpeg" alt="Кресло с подлокотниками" />
 							<h3 class="cart__title-product">Кресло с подлокотниками</h3>
 							<p class="cart__price">5&nbsp;000&nbsp;₽</p>
 							<p class="cart__article">арт. 84348945757</p>
@@ -466,7 +461,7 @@
 							</div>
 						</li>
 						<li class="cart__product">
-							<img class="cart__img" src="img/photo.jpeg" alt="Кресло с подлокотниками" />
+							<img class="cart__img" src="/img/photo.jpeg" alt="Кресло с подлокотниками" />
 							<h3 class="cart__title-product">Кресло с подлокотниками</h3>
 							<p class="cart__price">10&nbsp;000&nbsp;₽</p>
 							<p class="cart__article">арт. 84348945757</p>
@@ -477,7 +472,7 @@
 							</div>
 						</li>
 						<li class="cart__product">
-							<img class="cart__img" src="img/photo.jpeg" alt="Кресло с подлокотниками" />
+							<img class="cart__img" src="/img/photo.jpeg" alt="Кресло с подлокотниками" />
 							<h3 class="cart__title-product">Кресло с подлокотниками</h3>
 							<p class="cart__price">5&nbsp;000&nbsp;₽</p>
 							<p class="cart__article">арт. 84348945757</p>
@@ -529,7 +524,6 @@
 					</form>
 				</div>
 			</section>
-			<!-- /.cart -->
 
 			<section class="order">
 				<div class="container order__container">
@@ -575,13 +569,12 @@
 					</div>
 				</div>
 			</section>
-			<!-- /.order -->
 		</main>
 
 		<footer class="footer">
 			<div class="container footer__container">
 				<a class="footer__link-logo" href="/">
-					<img class="footer__logo" src="img/logo.svg" alt="Логотип мебельного маркета Koff" />
+					<img class="footer__logo" src="/img/logo.svg" alt="Логотип мебельного маркета Koff" />
 				</a>
 
 				<div class="footer__contacts contacts">
@@ -633,17 +626,16 @@
 				<ul class="footer__developer-list">
 					<li class="footer__developer-item">
 						<span>Designer: </span>
-						<a class="footer__developer-link" href="https://t.me/Mrshmallowww">Anastasia Ilina</a>
+						<a class="footer__developer-link" href="https://t.me/Mrshmallowww" target="_blank">Anastasia Ilina</a>
 					</li>
 					<li class="footer__developer-item">
 						<span>Developer: </span>
-						<a class="footer__developer-link" href="https://t.me/MaksSafonov">Maksim Safonov</a>
+						<a class="footer__developer-link" href="https://t.me/MaksSafonov" target="_blank">Maksim Safonov</a>
 					</li>
 				</ul>
 
 				<p class="footer__copyright">© Koff, 2023</p>
 			</div>
-		</footer>
-		<!-- /.footer -->
+		</footer> -->
 	</body>
 </html>
