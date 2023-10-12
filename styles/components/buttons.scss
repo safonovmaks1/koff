@@ -12,6 +12,10 @@
 	&:hover {
 		background: #9200b7;
 	}
+	&:active {
+		color: #c0f;
+		border-color: #c0f;
+	}
 	&:focus-visible {
 		outline: 1px solid #c0f;
 		border: 1px solid #c0f;

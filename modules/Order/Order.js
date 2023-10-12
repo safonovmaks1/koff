@@ -1,4 +1,4 @@
-import { addContainer } from '../addCOntainer';
+import { addContainer } from '../addContainer';
 
 export class Order {
 	static instance = null;
@@ -71,7 +71,7 @@ export class Order {
 				</table>
 			</div>
 
-			<a class="btn order__link" href="/">На главную</a>	
+			<a class="btn order__link" href="/">На главную</a>
 		`;
 	}
 }

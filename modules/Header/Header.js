@@ -1,5 +1,6 @@
-import { addContainer } from '../addCOntainer';
-import logoImg from '/img/logo.svg';
+import { Logo } from '../../features/Logo/Logo';
+import { likeSvg } from '../../features/likeSvg/likeSvg';
+import { addContainer } from '../addContainer';
 
 export class Header {
 	static instance = null;
@@ -21,7 +22,7 @@ export class Header {
 			return;
 		}
 
-		const logo = this.getLogo();
+		const logo = new Logo('header').create();
 		const searchForm = this.getSearchForm();
 		const navigation = this.getNavigation();
 
@@ -34,20 +35,6 @@ export class Header {
 	unmount() {
 		this.element.remove();
 		this.isMounted = false;
-	}
-
-	getLogo() {
-		const logo = document.createElement('a');
-		logo.classList.add('header__link-logo');
-		logo.href = '/';
-
-		const imgLogo = new Image();
-		imgLogo.classList.add('header__logo');
-		imgLogo.src = logoImg;
-		imgLogo.alt = 'Логотип мебельного маркета Koff';
-
-		logo.append(imgLogo);
-		return logo;
 	}
 
 	getSearchForm() {
@@ -94,17 +81,15 @@ export class Header {
 		const favoriteLink = document.createElement('a');
 		favoriteLink.classList.add('header__link');
 		favoriteLink.href = '/favorite';
-		favoriteLink.innerHTML = `
-		<span class="header__link-text">Избранное</span>
-		<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path
-				d="M8.41325 13.8733C8.18658 13.9533 7.81325 13.9533 7.58658 13.8733C5.65325 13.2133 1.33325 10.46 1.33325 5.79332C1.33325 3.73332 2.99325 2.06665 5.03992 2.06665C6.25325 2.06665 7.32658 2.65332 7.99992 3.55998C8.67325 2.65332 9.75325 2.06665 10.9599 2.06665C13.0066 2.06665 14.6666 3.73332 14.6666 5.79332C14.6666 10.46 10.3466 13.2133 8.41325 13.8733Z"
-				stroke="#1C1C1C"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			/>
-		</svg>
-		`;
+
+		const favoriteText = document.createElement('span');
+		favoriteText.classList.add('header__link-text');
+		favoriteText.textContent = 'Избранное';
+		favoriteLink.append(favoriteText);
+
+		likeSvg().then(svg => {
+			favoriteLink.append(svg);
+		});
 
 		const cartLink = document.createElement('a');
 		cartLink.classList.add('header__link');
@@ -150,7 +135,7 @@ export class Header {
 				stroke-linecap="round"
 			/>
 		</svg>
-		`
+		`,
 		);
 
 		navigation.append(favoriteLink, cartLink);

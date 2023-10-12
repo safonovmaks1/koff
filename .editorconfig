@@ -1,0 +1,25 @@
+root = true
+
+# General settings for whole project
+[*]
+charset = utf-8
+indent_style = tab
+indent_size = 2
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.js]
+quote_type = single
+
+[*.json]
+indent_style = tab
+indent_size = 2
+
+[*.min.*]
+indent_style = ignore
+trim_trailing_whitespace = false
+insert_final_newline = ignore
+
+[*.html]
+end_of_line = crlf

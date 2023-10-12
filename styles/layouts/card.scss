@@ -1,8 +1,11 @@
 .card {
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 
 	&__link {
-		&-img {
+		&_img {
 			display: block;
 			margin-bottom: 12px;
 
@@ -13,6 +16,8 @@
 	}
 
 	&__info {
+		flex-grow: 1;
+
 		@media (min-width: 580px) {
 			display: flex;
 			justify-content: space-between;
@@ -35,9 +40,6 @@
 		@media (min-width: 820px) {
 			font-size: 20px;
 		}
-
-		@media (min-width: 1120px) {
-		}
 	}
 
 	&__price {
@@ -59,20 +61,48 @@
 		position: absolute;
 		top: 12px;
 		right: 12px;
+
+		svg {
+			fill: #fff;
+		}
+
+		&:hover,
+		&_active {
+			color: #780096;
+			svg {
+				fill: #780096;
+			}
+		}
+
+		&:active {
+			color: #c0f;
+			svg {
+				fill: #c0f;
+			}
+		}
 	}
 
 	&__image {
 		width: 100%;
 		object-fit: cover;
 		border-radius: 16px;
+		aspect-ratio: 7/6;
+
+		@media (min-width: 580px) {
+			aspect-ratio: 23/20;
+		}
+
+		@media (min-width: 820px) {
+			aspect-ratio: 151/125;
+		}
 	}
 
-	@media (min-width: 580px) {
-	}
+	// @media (min-width: 580px) {
+	// }
 
-	@media (min-width: 820px) {
-	}
+	// @media (min-width: 820px) {
+	// }
 
-	@media (min-width: 1120px) {
-	}
+	// @media (min-width: 1120px) {
+	// }
 }
