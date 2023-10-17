@@ -1,10 +1,12 @@
 import Navigo from 'navigo';
+import { Pagination } from './features/Pagination/Pagination';
 import { Catalog } from './modules/Catalog/Catalog';
 import { Footer } from './modules/Footer/Footer';
 import { Header } from './modules/Header/Header';
 import { Main } from './modules/Main/Main';
 import { ProductList } from './modules/ProductList/ProductList';
 import { ApiService } from './services/ApiService';
+import { FavoriteService } from './services/StorageService';
 import './style.scss';
 
 const productSlider = () => {
@@ -37,13 +39,14 @@ const init = () => {
 
 	new Header().mount();
 	new Main().mount();
-	// new Order().mount(new Main().element);
+	// new Order().mount();
 	new Footer().mount();
 
 	api.getProductCategories().then(data => {
 		new Catalog().mount(new Main().element, data);
 		router.updatePageLinks();
 	});
+
 	productSlider();
 
 	router
@@ -59,16 +62,22 @@ const init = () => {
 					new ProductList().unmount();
 					done();
 				},
-				already() {
-					console.log('already');
+				already(match) {
+					match.route.handler(match);
 				},
 			},
 		)
 		.on(
 			'/category',
-			async ({ params: { slug } }) => {
-				const product = await api.getProducts();
-				new ProductList().mount(new Main().element, product, slug);
+			async ({ params: { slug, page } }) => {
+				const { data: products, pagination } = await api.getProducts({
+					category: slug,
+					page: page || 1,
+				});
+
+				new ProductList().mount(new Main().element, products, slug);
+				new Pagination().mount(new ProductList().containerElement).update(pagination);
+				router.updatePageLinks();
 			},
 			{
 				leave(done) {
@@ -80,14 +89,23 @@ const init = () => {
 		.on(
 			'/favorite',
 			async () => {
-				const product = await api.getProducts();
-				new ProductList().mount(new Main().element, product, 'Favorite');
+				const favorite = new FavoriteService().get();
+				const { data: product } = await api.getProducts({ list: favorite });
+				new ProductList().mount(
+					new Main().element,
+					product,
+					'Избранное',
+					'Вы ничего не добавили в избранное, пожалуйста, добавьте что-нибудь...',
+				);
 				router.updatePageLinks();
 			},
 			{
 				leave(done) {
 					new ProductList().unmount();
 					done();
+				},
+				already(match) {
+					match.route.handler(match);
 				},
 			},
 		)
@@ -101,14 +119,18 @@ const init = () => {
 			console.log('Cart');
 		})
 		.on('/order', () => {
+			// new Order().mount(new Main().element);
+			// router.updatePageLinks();
 			console.log('Order');
 		})
 		.notFound(() => {
 			new Main().element.innerHTML = `
+			<div class="container">
 				<h2>Page not found</h2>
 				<p>через 5 секунд вы будете на
 					<a href="/">главную страницу</a>
 				</p>
+			</div>
 			`;
 
 			setTimeout(() => {
