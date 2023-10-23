@@ -1,5 +1,6 @@
 .card {
 	position: relative;
+
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -9,7 +10,7 @@
 			display: block;
 			margin-bottom: 12px;
 
-			@media (min-width: 580px) {
+			@media (width >= 580px) {
 				margin-bottom: 16px;
 			}
 		}
@@ -18,41 +19,44 @@
 	&__info {
 		flex-grow: 1;
 
-		@media (min-width: 580px) {
+		@media (width >= 580px) {
 			display: flex;
-			justify-content: space-between;
 			gap: 5px;
+			justify-content: space-between;
 			margin-bottom: 20px;
 		}
 	}
 
 	&__title {
 		margin-bottom: 4px;
-		font-size: 12px;
-		font-weight: 400;
 
-		@media (min-width: 580px) {
-			padding-top: 3px;
-			font-size: 16px;
+		font-weight: 400;
+		font-size: 12px;
+
+		@media (width >= 580px) {
 			margin-bottom: 0;
+			padding-top: 3px;
+
+			font-size: 16px;
 		}
 
-		@media (min-width: 820px) {
+		@media (width >= 820px) {
 			font-size: 20px;
 		}
 	}
 
 	&__price {
 		margin-bottom: 12px;
+
 		font-size: 16px;
 
-		@media (min-width: 580px) {
+		@media (width >= 580px) {
 			margin-bottom: 0;
 		}
 	}
 
 	&__btn {
-		@media (min-width: 580px) {
+		@media (width >= 580px) {
 			grid-area: btn;
 		}
 	}
@@ -69,6 +73,7 @@
 		&:hover,
 		&_active {
 			color: #780096;
+
 			svg {
 				fill: #780096;
 			}
@@ -76,6 +81,7 @@
 
 		&:active {
 			color: #c0f;
+
 			svg {
 				fill: #c0f;
 			}
@@ -85,14 +91,15 @@
 	&__image {
 		width: 100%;
 		object-fit: cover;
+
 		border-radius: 16px;
 		aspect-ratio: 7/6;
 
-		@media (min-width: 580px) {
+		@media (width >= 580px) {
 			aspect-ratio: 23/20;
 		}
 
-		@media (min-width: 820px) {
+		@media (width >= 820px) {
 			aspect-ratio: 151/125;
 		}
 	}

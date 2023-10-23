@@ -3,35 +3,39 @@
 	margin: 0 auto;
 
 	&__bar {
-		margin-bottom: 16px;
 		width: 100%;
 		height: 6px;
+		margin-bottom: 16px;
+
 		background-color: #eeeff2;
 		border-radius: 3px;
 
 		&::after {
-			content: '';
 			display: block;
-			height: 100%;
 			width: var(--width);
+			height: 100%;
+
 			background-color: #780096;
 			border-radius: 3px;
+
 			transition: width 0.3s;
+
+			content: '';
 		}
 	}
 
 	&__arrows {
 		display: flex;
-		justify-content: center;
-		align-items: center;
 		gap: 8px;
+		align-items: center;
+		justify-content: center;
 	}
 
 	&__left,
 	&__right {
+		border-radius: 4px;
 		outline: 1px solid transparent;
 		outline-offset: 4px;
-		border-radius: 4px;
 
 		&:hover {
 			color: #780096;
@@ -39,14 +43,15 @@
 
 		&:focus-visible {
 			color: #780096;
+
 			outline-color: #780096;
 		}
 	}
 
 	&__info {
 		display: flex;
-		align-items: center;
 		gap: 4px;
+		align-items: center;
 	}
 
 	// &__current {

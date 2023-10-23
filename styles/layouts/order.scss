@@ -1,26 +1,30 @@
 .order {
 	padding: 60px 16px 100px;
 
-	@media (min-width: 580px) {
+	@media (width >= 580px) {
 		padding-top: 120px;
 		padding-bottom: 160px;
 	}
 
 	&__container {
-		padding: 24px 16px;
 		max-width: 710px;
-		border-radius: 16px;
+		padding: 24px 16px;
+
 		border: 1px solid #eeeff2;
-		@media (min-width: 580px) {
+		border-radius: 16px;
+
+		@media (width >= 580px) {
 			padding: 60px 151px;
 		}
-		@media (min-width: 820px) {
-			padding: 60px 159px;
+
+		@media (width >= 820px) {
 			max-width: 726px;
+			padding: 60px 159px;
 		}
-		@media (min-width: 1120px) {
-			padding: 60px 212px;
+
+		@media (width >= 1120px) {
 			max-width: 832px;
+			padding: 60px 212px;
 		}
 	}
 
@@ -30,7 +34,7 @@
 		gap: 8px;
 		margin-bottom: 8px;
 
-		@media (min-width: 580px) {
+		@media (width >= 580px) {
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-between;
@@ -41,20 +45,22 @@
 	&__price,
 	&__data-title {
 		color: #1c1c1c;
-		font-size: 16px;
 		font-weight: 400;
+		font-size: 16px;
 	}
 
 	&__number {
 		display: block;
 		max-width: 63px;
-		padding: 4px 8px;
 		margin-bottom: 20px;
-		border-radius: 32px;
+		padding: 4px 8px;
+
 		color: #969eae;
+
 		background-color: #eeeff2;
-		outline: none;
 		border: 1px solid transparent;
+		border-radius: 32px;
+		outline: none;
 	}
 
 	&__data {

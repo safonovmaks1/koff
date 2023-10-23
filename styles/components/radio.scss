@@ -1,8 +1,10 @@
 .radio {
 	position: relative;
+
 	display: flex;
 	align-items: center;
 	margin-bottom: 8px;
+
 	font-size: 12px;
 	line-height: 16px;
 
@@ -12,55 +14,60 @@
 
 	&__input {
 		position: relative;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		padding: 2px;
-		margin-right: 8px;
 
-		&:before {
-			content: '';
+		margin-right: 8px;
+		padding: 2px;
+
+		appearance: none;
+
+		&::before {
 			display: block;
 			width: 12px;
 			height: 12px;
-			background-color: #ffffff;
+
+			background-color: #fff;
 			border: 1px solid black;
 			border-radius: 8px;
+
+			content: '';
 		}
 
-		&:after {
-			content: '';
+		&::after {
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			transform: translate(-50%, -50%);
+
 			width: 4px;
 			height: 4px;
+
 			background-color: #151515;
 			border-radius: 50%;
+			transform: translate(-50%, -50%);
 			opacity: 0;
+
+			content: '';
 		}
 
 		&:focus-visible {
 			outline: none;
 
-			&:before {
-				box-shadow: 0px 0px 10px rgba(120, 0, 150, 0.5);
+			&::before {
+				box-shadow: 0 0 10px rgb(120 0 150 / 50%);
 			}
 		}
 
-		&:checked:after {
+		&:checked::after {
 			opacity: 1;
 		}
 
 		&:hover {
-			&:not(:disabled):before {
-				box-shadow: 0px 0px 10px rgba(120, 0, 150, 0.5);
+			&:not(:disabled)::before {
+				box-shadow: 0 0 10px rgb(120 0 150 / 50%);
 			}
 		}
 
-		&:disabled:before {
-			background-color: #cccccc;
+		&:disabled::before {
+			background-color: #ccc;
 		}
 	}
 }

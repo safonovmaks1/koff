@@ -1,5 +1,6 @@
 .table {
 	width: 100%;
+
 	border-collapse: collapse;
 
 	&__row {
@@ -8,12 +9,14 @@
 
 	&__field {
 		padding: 8px 0;
+
 		color: #969eae;
 	}
 
 	&__value {
 		padding: 8px 0;
-		text-align: right;
+
 		color: #1c1c1c;
+		text-align: right;
 	}
 }

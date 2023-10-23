@@ -1,18 +1,19 @@
 .header {
 	padding-top: 16px;
 	padding-bottom: 17px;
+
 	border-bottom: 1px solid #eeeff2;
 
 	&__container {
 		display: grid;
-		gap: 16px;
-		align-items: center;
-		justify-content: space-between;
 		grid-template-areas:
 			'logo control'
 			'search search';
+		gap: 16px;
+		align-items: center;
+		justify-content: space-between;
 
-		@media (min-width: 820px) {
+		@media (width >= 820px) {
 			grid-template-areas: 'logo search control';
 			grid-template-columns: 94px 1fr auto;
 			align-items: center;
@@ -28,17 +29,18 @@
 	}
 
 	&__search {
-		grid-area: search;
 		position: relative;
+
+		grid-area: search;
 		width: 100%;
 		height: 38px;
 
-		@media (min-width: 820px) {
-			max-width: 408px;
+		@media (width >= 820px) {
 			justify-self: center;
+			max-width: 408px;
 		}
 
-		@media (min-width: 1120px) {
+		@media (width >= 1120px) {
 			max-width: 514px;
 		}
 	}
@@ -47,9 +49,10 @@
 		width: 100%;
 		height: 100%;
 		padding: 0 40px 0 24px;
-		border-radius: 32px;
+
 		background-color: #eeeff2;
 		border: none;
+		border-radius: 32px;
 
 		&::placeholder {
 			color: #969eae;
@@ -64,14 +67,16 @@
 	&__btn {
 		position: absolute;
 		top: 50%;
-		transform: translateY(-50%);
 		right: 24px;
+
 		display: block;
 		width: 16px;
 		height: 16px;
+
 		border-radius: 4px;
-		outline-offset: 4px;
 		outline: 1px solid transparent;
+		outline-offset: 4px;
+		transform: translateY(-50%);
 
 		&:hover,
 		&:active {
@@ -80,22 +85,23 @@
 
 		&:focus-visible {
 			color: #780096;
+
 			outline-color: #780096;
 		}
 	}
 
 	&__control {
-		grid-area: control;
-		justify-self: end;
 		display: flex;
+		grid-area: control;
 		gap: 16px;
+		justify-self: end;
 	}
 
 	&__link {
 		display: flex;
 		flex-direction: row-reverse;
-		align-items: center;
 		gap: 4px;
+		align-items: center;
 
 		svg {
 			fill: #fff;
@@ -112,21 +118,20 @@
 
 		&:focus-visible {
 			color: #780096;
+
 			outline-color: #780096;
 		}
 
-		@media (min-width: 580px) {
+		@media (width >= 580px) {
 			flex-direction: row;
 		}
 	}
 
 	&__link-text {
 		display: none;
-		@media (min-width: 580px) {
+
+		@media (width >= 580px) {
 			display: block;
 		}
-	}
-
-	&__count {
 	}
 }

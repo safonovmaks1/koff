@@ -1,19 +1,28 @@
 .breadcrumb {
 	padding-top: 20px;
 
-	@media (min-width: 580px) {
+	@media (width >= 580px) {
 		padding-top: 24px;
 	}
 
 	&__list {
 		display: flex;
 		gap: 6px;
+
 		color: #969eae;
 	}
 
 	&__item {
 		display: flex;
 		gap: 6px;
+
+		&:hover {
+			color: #c0f;
+		}
+	}
+
+	&__item:last-child {
+		color: #969eae;
 	}
 
 	&__item:last-child &__separator {

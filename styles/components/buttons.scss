@@ -1,42 +1,55 @@
 .btn {
-	width: 100%;
 	display: block;
+	width: 100%;
 	padding: 12px 24px;
+
 	color: #fff;
 	font-size: 12px;
 	text-align: center;
-	border-radius: 32px;
-	border: 1px solid #780096;
+
 	background: #780096;
+	border: 1px solid #780096;
+	border-radius: 32px;
+
 	transition: background 0.3s ease-in-out;
+
 	&:hover {
 		background: #9200b7;
 	}
+
 	&:active {
 		color: #c0f;
+
 		border-color: #c0f;
 	}
+
 	&:focus-visible {
-		outline: 1px solid #c0f;
 		border: 1px solid #c0f;
+		outline: 1px solid #c0f;
 	}
+
 	&:disabled {
-		border-radius: 32px;
-		border: 1px solid #780096;
-		opacity: 0.2;
 		background: #780096;
+		border: 1px solid #780096;
+		border-radius: 32px;
+		opacity: 0.2;
 	}
 
 	&--inverse {
 		color: #780096;
-		border: 1px solid #780096;
+
 		background: transparent;
+		border: 1px solid #780096;
 		outline: none;
+
 		transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+
 		&:hover {
 			color: #fff;
+
 			background-color: #9200b7;
 		}
+
 		&:focus-visible {
 			border: 1px solid #c0f;
 		}
