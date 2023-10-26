@@ -107,7 +107,7 @@ export class Header {
 
 		const countElement = document.createElement('span');
 		countElement.classList.add('header__count');
-		countElement.textContent = '(5)';
+		countElement.textContent = '(0)';
 
 		cartLink.append(linkText, countElement);
 
@@ -150,7 +150,6 @@ export class Header {
 	}
 
 	changeCount(n) {
-		// todo n - get
 		this.countElement.textContent = `(${n})`;
 	}
 }

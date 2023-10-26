@@ -1,77 +1,97 @@
-import { addContainer } from '../addContainer';
+import { addContainer } from "../addContainer";
 
 export class Order {
-	static instance = null;
+  static instance = null;
 
-	constructor() {
-		if (!Order.instance) {
-			Order.instance = this;
-			this.element = document.createElement('section');
-			this.element.classList.add('order');
-			this.containerElement = addContainer(this.element, 'order__container');
-			this.isMounted = false;
-		}
+  constructor() {
+    if (!Order.instance) {
+      Order.instance = this;
+      this.element = document.createElement("section");
+      this.element.classList.add("order");
+      this.containerElement = addContainer(this.element, "order__container");
+      this.isMounted = false;
 
-		return Order.instance;
-	}
+      this.deliveryTypeList = {
+        delivery: "Доставка",
+        pickup: "Самовывоз",
+      };
+      this.PaymentTypeList = {
+        card: "Картой при получении",
+        cash: "Наличными при получении",
+      };
+    }
 
-	mount() {
-		if (this.isMounted) {
-			return;
-		}
+    return Order.instance;
+  }
 
-		this.containerElement.insertAdjacentHTML('beforeend', this.getHTML());
+  mount(parent, data) {
+    this.render(data);
 
-		document.body.append(this.element);
-		this.isMounted = true;
-	}
+    if (this.isMounted) {
+      return;
+    }
 
-	unmount() {
-		this.element.remove();
-		this.isMounted = false;
-	}
+    parent.append(this.element);
+    this.isMounted = true;
+  }
 
-	getHTML() {
-		return `
-			<div class="order__header">
-				<h2 class="order__title">Заказ успешно размещен</h2>
-				<p class="order__price">20&nbsp;000&nbsp;₽</p>
-			</div>
+  unmount() {
+    this.element.remove();
+    this.isMounted = false;
+  }
 
-			<p class="order__number">№43435</p>
+  render(data) {
+    const totalPrice =
+      parseInt(data.totalPrice) + (data.deliveryType === "delivery" ? 500 : 0);
+    this.containerElement.innerHTML = `
+      <div class="order__content">
+        <div class="order__header">
+          <h2 class="order__title">Заказ успешно размещен</h2>
+          <p class="order__price">${totalPrice.toLocaleString()} ₽</p>
+        </div>
 
-			<div class="order__data">
-				<h3 class="order__data-title">Данные доставки</h3>
+        <p class="order__number">№${data.id}</p>
 
-				<table class="order__data-table table">
-					<tr class="table__row">
-						<td class="table__field">Получатель</td>
-						<td class="table__value">Иванов Петр Александрович</td>
-					</tr>
-					<tr class="table__row">
-						<td class="table__field">Телефон</td>
-						<td class="table__value">+7 (737) 346 23 00</td>
-					</tr>
-					<tr class="table__row">
-						<td class="table__field">E-mail</td>
-						<td class="table__value">Ivanov84@gmail.com</td>
-					</tr>
-					<tr class="table__row">
-						<td class="table__field">Адрес доставки</td>
-						<td class="table__value">Москва, ул. Ленина, 21, кв. 33</td>
-					</tr>
-					<tr class="table__row">
-						<td class="table__field">Способ оплаты</td>
-						<td class="table__value">Картой при получении</td>
-					</tr>
-					<tr class="table__row">
-						<td class="table__field">Способ получения</td>
-						<td class="table__value">Доставка</td>
-					</tr>
-				</table>
-			</div>
+        <div class="order__table-wrapper">
+          <h3 class="order__table-title">Данные доставки</h3>
+          <table class="order__table table">
+            <tr class="table__row">
+              <td class="table__field">Получатель</td>
+              <td class="table__value">${data.name}</td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__field">Телефон</td>
+              <td class="table__value">${data.phone}</td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__field">E-mail</td>
+              <td class="table__value">${data.email}</td>
+            </tr>
+            ${
+              data.address
+                ? `<tr class="table__row">
+                    <td class="table__field">Адрес доставки</td>
+                    <td class="table__value">${data.address}</td>
+                  </tr>`
+                : ""
+            }
+            <tr class="table__row">
+              <td class="table__field">Способ оплаты</td>
+              <td class="table__value">${
+                this.PaymentTypeList[data.paymentType]
+              }</td>
+            </tr>
+            <tr class="table__row">
+              <td class="table__field">Способ получения</td>
+              <td class="table__value">${
+                this.deliveryTypeList[data.deliveryType]
+              }</td>
+            </tr>
+          </table>
+        </div>
 
-			<a class="btn order__link" href="/">На главную</a>
-		`;
-	}
+        <a class="order__back" href="/">На главную</a>
+      </div>
+    `;
+  }
 }

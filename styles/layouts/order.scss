@@ -1,31 +1,25 @@
 .order {
-	padding: 60px 16px 100px;
+	padding: 32px 5px 0;
 
-	@media (width >= 580px) {
-		padding-top: 120px;
-		padding-bottom: 160px;
+	@media (width >= 480px) {
+		padding-top: 60px;
 	}
 
 	&__container {
-		max-width: 710px;
+		max-width: 700px;
 		padding: 24px 16px;
 
 		border: 1px solid #eeeff2;
 		border-radius: 16px;
 
-		@media (width >= 580px) {
-			padding: 60px 151px;
+		@media (width >= 480px) {
+			padding: 60px;
 		}
+	}
 
-		@media (width >= 820px) {
-			max-width: 726px;
-			padding: 60px 159px;
-		}
-
-		@media (width >= 1120px) {
-			max-width: 832px;
-			padding: 60px 212px;
-		}
+	&__content {
+		max-width: 408px;
+		margin: 0 auto;
 	}
 
 	&__header {
@@ -34,40 +28,63 @@
 		gap: 8px;
 		margin-bottom: 8px;
 
-		@media (width >= 580px) {
+		@media (width >= 480px) {
 			flex-direction: row;
-			align-items: center;
 			justify-content: space-between;
+			margin-bottom: 12px;
 		}
 	}
 
-	&__title,
-	&__price,
-	&__data-title {
-		color: #1c1c1c;
+	&__title {
+		font-weight: 400;
+		font-size: 16px;
+
+		@media (width >= 480px) {
+			font-size: 20px;
+		}
+	}
+
+	&__price {
+		font-size: 16px;
+
+		@media (width >= 480px) {
+			font-size: 20px;
+		}
+	}
+
+	&__number {
+		display: inline-block;
+		margin-bottom: 20px;
+		padding: 4px 8px;
+
+		background-color: #eeeff2;
+		border-radius: 32px;
+
+		@media (width >= 480px) {
+			margin-bottom: 24px;
+		}
+	}
+
+	&__table-wrapper {
+		margin-bottom: 24px;
+	}
+
+	&__table-title {
 		font-weight: 400;
 		font-size: 16px;
 	}
 
-	&__number {
+	&__back {
 		display: block;
-		max-width: 63px;
-		margin-bottom: 20px;
-		padding: 4px 8px;
+		width: 100%;
+		padding: 12px 24px;
 
-		color: #969eae;
+		color: #fff;
+		font-size: 12px;
+		text-align: center;
 
-		background-color: #eeeff2;
+		background-color: #780096;
 		border: 1px solid transparent;
 		border-radius: 32px;
-		outline: none;
 	}
-
-	&__data {
-		margin-bottom: 20px;
-	}
-
-	// &__data-table {}
-
-	// &__link {}
 }

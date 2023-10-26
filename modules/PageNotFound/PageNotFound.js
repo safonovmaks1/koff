@@ -4,15 +4,15 @@ export class PageNotFound {
 	static instance = null;
 
 	constructor() {
-		if (!NoPage.instance) {
-			NoPage.instance = this;
+		if (!PageNotFound.instance) {
+			PageNotFound.instance = this;
 
 			this.element = document.createElement('div');
 			this.containerElement = addContainer(this.element);
 
 			this.isMounted = false;
 		}
-		return NoPage.instance;
+		return PageNotFound.instance;
 	}
 
 	mount(parent) {

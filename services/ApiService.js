@@ -47,10 +47,6 @@ export class ApiService {
 		}
 	}
 
-	// async getProducts(params) {
-	// 	return await this.getData('api/products');
-	// }
-
 	async getProducts(params = {}) {
 		if (params.list) {
 			params.list = params.list.join(',');
@@ -64,5 +60,115 @@ export class ApiService {
 
 	async getProductById(id) {
 		return await this.getData(`api/products/${id}`);
+	}
+
+	async postProductToCart(productId, quantity = 1) {
+		if (!this.accessKey) {
+			await this.getAccessKey();
+		}
+
+		try {
+			const response = await axios.post(
+				`${this.#apiUrl}api/cart/products`,
+				{
+					productId,
+					quantity,
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${this.accessKey}`,
+					},
+				},
+			);
+
+			return response.data;
+		} catch (err) {
+			if (err.response && err.response.status === 401) {
+				this.accessKey = null;
+				this.accessKeyService.delete();
+			}
+			console.error(err);
+		}
+	}
+
+	async updateQuantityProductToCart(productId, quantity) {
+		if (!this.accessKey) {
+			await this.getAccessKey();
+		}
+
+		try {
+			const response = await axios.put(
+				`${this.#apiUrl}api/cart/products`,
+				{
+					productId,
+					quantity,
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${this.accessKey}`,
+					},
+				},
+			);
+
+			return response.data;
+		} catch (err) {
+			if (err.response && err.response.status === 401) {
+				this.accessKey = null;
+				this.accessKeyService.delete();
+			}
+			console.error(err);
+		}
+	}
+
+	async getCart() {
+		return await this.getData('api/cart');
+	}
+
+	async deleteProductFromCart(id) {
+		if (!this.accessKey) {
+			await this.getAccessKey();
+		}
+
+		try {
+			const response = await axios.delete(`${this.#apiUrl}api/cart/products/${id}`, {
+				headers: {
+					Authorization: `Bearer ${this.accessKey}`,
+				},
+			});
+
+			return response.data;
+		} catch (err) {
+			if (err.response && err.response.status === 401) {
+				this.accessKey = null;
+				this.accessKeyService.delete();
+			}
+			console.error(error);
+		}
+	}
+
+	async postOrder(data) {
+		if (!this.accessKey) {
+			await this.getAccessKey();
+		}
+
+		try {
+			const response = await axios.post(`${this.#apiUrl}api/orders`, data, {
+				headers: {
+					Authorization: `Bearer ${this.accessKey}`,
+				},
+			});
+
+			return response.data;
+		} catch (err) {
+			if (err.response && err.response.status === 401) {
+				this.accessKey = null;
+				this.accessKeyService.delete();
+			}
+			console.error(err);
+		}
+	}
+
+	async getOrder(id) {
+		return await this.getData(`api/orders/${id}`);
 	}
 }

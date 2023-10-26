@@ -10,7 +10,11 @@ export class Catalog {
 			this.element = document.createElement('nav');
 			this.element.classList.add('catalog');
 			this.containerElement = addContainer(this.element, 'catalog__container');
+			this.listElem = document.createElement('ul');
+			this.listElem.classList.add('catalog__list');
+			this.containerElement.append(this.listElem);
 			this.isMounted = false;
+			this.linksList = [];
 		}
 
 		return Catalog.instance;
@@ -22,7 +26,7 @@ export class Catalog {
 
 	async mount(parent) {
 		if (this.isMounted) {
-			return;
+			return this;
 		}
 
 		if (!this.catalogData) {
@@ -32,6 +36,7 @@ export class Catalog {
 
 		parent.prepend(this.element);
 		this.isMounted = true;
+		return this;
 	}
 
 	unmount() {
@@ -40,13 +45,13 @@ export class Catalog {
 	}
 
 	renderListElem(data) {
-		const listElem = document.createElement('ul');
-		listElem.classList.add('catalog__list');
+		this.listElem.textContent = '';
 
 		const listItems = data.map(item => {
 			const listItemElem = document.createElement('li');
 			listItemElem.classList.add('catalog__item');
 			const link = document.createElement('a');
+			this.linksList.push(link);
 			link.classList.add('catalog__link');
 			link.href = `/category?slug=${item}`;
 			link.textContent = item;
@@ -55,7 +60,18 @@ export class Catalog {
 			return listItemElem;
 		});
 
-		listElem.append(...listItems);
-		this.containerElement.append(listElem);
+		this.listElem.append(...listItems);
+	}
+
+	setActiveLink(slug) {
+		const encodedSlug = encodeURIComponent(slug);
+		this.linksList.forEach(link => {
+			const linkSlug = new URL(link.href).searchParams.get('slug');
+			if (encodeURIComponent(linkSlug) === encodedSlug) {
+				link.classList.add('catalog__link_active');
+			} else {
+				link.classList.remove('catalog__link_active');
+			}
+		});
 	}
 }

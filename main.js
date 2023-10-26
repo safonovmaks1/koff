@@ -2,10 +2,12 @@ import Navigo from 'navigo';
 import { BreadCrumbs } from './features/Breadcrumbs/Breadcrumbs';
 import { Pagination } from './features/Pagination/Pagination';
 import { productSlider } from './features/productSlider/productSlider';
+import { Cart } from './modules/Cart/Cart';
 import { Catalog } from './modules/Catalog/Catalog';
 import { Footer } from './modules/Footer/Footer';
 import { Header } from './modules/Header/Header';
 import { Main } from './modules/Main/Main';
+import { Order } from './modules/Order/Order';
 import { PageNotFound } from './modules/PageNotFound/PageNotFound';
 import { ProductCard } from './modules/ProductCard/ProductCard';
 import { ProductList } from './modules/ProductList/ProductList';
@@ -20,12 +22,17 @@ const init = () => {
 
 	new Header().mount();
 	new Main().mount();
-	// new Order().mount();
 	new Footer().mount();
 
 	// api.getProductCategories().then(data => {
 	// 	new Catalog().mount(new Main().element, data);
 	// 	router.updatePageLinks();
+	// });
+
+	// router.hooks({
+	// 	after() {
+	// 		new Catalog().setActiveLink();
+	// 	},
 	// });
 
 	router
@@ -51,7 +58,7 @@ const init = () => {
 		.on(
 			'/category',
 			async ({ params: { slug, page = 1 } }) => {
-				new Catalog().mount(new Main().element);
+				(await new Catalog().mount(new Main().element)).setActiveLink(slug);
 				const { data: products, pagination } = await api.getProducts({
 					category: slug,
 					page: page,
@@ -162,14 +169,32 @@ const init = () => {
 				},
 			},
 		)
-		.on('/cart', () => {
-			console.log('Cart');
-		})
-		.on('/order', () => {
-			// new Order().mount(new Main().element);
-			// router.updatePageLinks();
-			console.log('Order');
-		})
+		.on(
+			'/cart',
+			async () => {
+				const cartItems = await api.getCart();
+				new Cart().mount(new Main().element, cartItems, 'Корзина пуста, добавьте товары');
+			},
+			{
+				leave(done) {
+					new Cart().unmount();
+					done();
+				},
+			},
+		)
+		.on(
+			'/order/:id',
+			async ({ data: { id } }) => {
+				const [order] = await api.getOrder(id);
+				new Order().mount(new Main().element, order);
+			},
+			{
+				leave(done) {
+					new Order().unmount();
+					done();
+				},
+			},
+		)
 		.notFound(
 			() => {
 				new PageNotFound().mount(new Main().element);
@@ -186,5 +211,9 @@ const init = () => {
 			},
 		);
 	router.resolve();
+
+	api.getCart().then(data => {
+		new Header().changeCount(data.totalCount);
+	});
 };
 init();
